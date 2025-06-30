@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic meta settings -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Human Burundi Web App</title>
+
+  <!-- Embedded CSS styling -->
+   <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+    }
+    header {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem 1.5rem;
+      position: relative;
+      box-shadow: 0 3px 8px rgba(255, 0, 0, 0.3);
+      margin-bottom: 20px;
+    }
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .logo {
+  width: 200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  background-color: white;
+  padding: 5px;
+  filter: brightness(1.3) drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+  transition: transform 0.3s ease;
+   }
+
+  .logo:hover {
+  transform: scale(1.05);
+  }
+
+    }
+    header h1 {
+      margin: 0.5rem 0 0.3rem;
+      font-weight: 700;
+      font-size: 2rem;
+      text-shadow: 1px 1px 2px #000;
+      background-color: red;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+    header p {
+      margin: 0;
+      font-style: italic;
+      font-weight: 600;
+      color: white;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      padding: 0 1rem 2rem;
+      flex-wrap: wrap;
+    }
+    section {
+      background: white;
+      border: 2px solid red;
+      border-radius: 10px;
+      width: 90%;
+      min-width: 320px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    }
+    section h2 {
+      text-align: center;
+      color: red;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      border-bottom: 3px solid black;
+      padding-bottom: 0.4rem;
+    }
+    section h3 {
+      color: black;
+      margin-top: 1rem;
+    }
+    section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    section ul li {
+      margin-bottom: 0.7rem;
+    }
+    a {
+      color: black;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: red;
+      text-decoration: underline;
+    }
+    #preventive-maintenance-calculator {
+      margin-top: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #006400;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+    #preventive-maintenance-calculator h4 {
+      color: red;
+      margin-bottom: 12px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: black;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid red;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: black;
+    }
+    .results {
+      margin-top: 15px;
+      background-color: #f9f9f9;
+      border: 1px solid black;
+      border-radius: 6px;
+      padding: 10px;
+      color: black;
+      font-weight: 700;
+    }
+    footer {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      margin-top: auto;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 5px rgba(255, 0, 0, 0.3);
+    }
+    footer a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: red;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
+      section {
+        width: 90%;
+        max-width: 600px;
+      }
+    }
+  
+
+    /* Unordered list styling */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    /* Link styling */
+    a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: red;
+    }
+
+    /* Hidden class used to toggle views */
+    .hidden {
+      display: none;
+    }
+
+    /* Login form design */
+    #loginForm {
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border: 2px solid black;
+      border-radius: 10px;
+      background-color: red;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    }
+
+    /* Inputs and buttons */
+    select, input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: red;
+    }
+
+    /* Logout button */
+    .logout-btn {
+      margin-top: 20px;
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header: Logo and title -->
+  <header>
+    <div class="logo-container">
+      <img src="http://www.medpointmedikal.com/wp-content/uploads/Human-Logo.jpg" class="logo" />
+    </div>
+    <h1>Human Burundi Biomedical Services</h1>
+    <p>Planning and Management for Optimization of Health Care</p>
+  </header>
+
+  <main>
+    <!-- Login Form Section -->
+    <form id="loginForm" onsubmit="return checkLogin()">
+      <h2>Login</h2>
+
+      <!-- Role selection dropdown -->
+      <label for="userRole">Select Role:</label>
+      <select id="userRole" required>
+        <option value="">-- Select Role --</option>
+        <option value="Human Burundi">Human Burundi User</option>
+        <option value="client">Client User</option>
+      </select>
+
+      <!-- Access code input -->
+      <label for="accessCode">Access Code:</label>
+      <input type="password" id="accessCode" placeholder="Enter Access Code" required />
+
+      <!-- Submit button -->
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Human Burundi User Section (Hidden by default) -->
+    <section id="Human BurundiSection" class="hidden">
+       <h2>Human Burundi User Login</h2>
+      <p>
+        This section is designed for planning and management within the
+        Biomedical Unit at Human Burundi.
+      </p>
+
+      <h3>Management</h3>
+      <ul>
+        <li>
+          <a
+            href="https://docs.google.com/spreadsheets/d/1BfAwGJEu-W2h5djjOW3v7uSfeKPZ-HbI4T5KB1OJptU/edit?usp=sharing"
+            target="_blank"
+            >Stock Management and Report</a
+         >
+       </li>
+     </ul>
+     <ul>
+        <li>
+          <a
+            href="https://forms.gle/KJeXAWsqusMNdTR89"
+            target="_blank"
+            >Curative Maintenance Report</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://forms.gle/1gvaqeCh6Ynt119Z7"
+            target="_blank"
+            >Preventive Maintenance Report</a
+          >
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a
+            href="https://docs.google.com/spreadsheets/d/1vTocVwz9dUOmANwk73E1sUEDNcGAeswBsKrP_5eLxIE/edit?usp=sharing"
+            target="_blank"
+            >Transport Cost for PM</a
+          >
+        </li>
+      </ul>
+
+      <h3>Planning</h3>
+      <ul>
+       <li>
+          <a
+            href="https://rwanda-bus-tickets-prices.streamlit.app/"
+            target="_blank"
+            >Transport in Rwanda Bus Tickets Prices Explorer by RURA</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://forms.gle/sMLcSVYtSUUjKndWA"
+            target="_blank"
+            >Curative Maintenance Mission Form</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://forms.gle/KaxqWa7rVRL2axHw5"
+            target="_blank"
+            >Preventive Maintenance Mission Form</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://docs.google.com/spreadsheets/d/156zgyXZU8PsMVgAxNDY87f_LwNnJFlwqJsLpiS3WPIc/edit?usp=sharing"
+            target="_blank"
+            >Preventive Maintenance plan (9th-26th)June 2025</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://docs.google.com/spreadsheets/d/1egrQ8jUXRhlF4wolGU6jfwaAzk4xyEhWKXkKD_M3-w8/edit?usp=sharing"
+            target="_blank"
+            ><b style="color: red;"> TOTAL MISSION COST</b></a
+          >
+        </li>
+      </ul>
+       <!-- Preventive Maintenance Calculation Tool -->
+<div id="preventive-maintenance-calculator">
+  <h4>Preventive Maintenance Duration Calculator</h4>
+  <form id="maintenanceForm" onsubmit="return false;">
+    <div class="form-group">
+      <label for="instruments">Number of Instruments (I):</label>
+      <input type="number" id="instruments" required>
+    </div>
+    <div class="form-group">
+      <label for="engineers">Number of Engineers (E):</label>
+      <input type="number" id="engineers" required>
+    </div>
+    <div class="form-group">
+      <label for="rate_of_work">Rate of Work (RW - Instruments per Day per Engineer):</label>
+      <input type="number" id="rate_of_work" required>
+    </div>
+    <div class="form-group">
+      <label for="restriction_days">Restriction Days (RD - Days Excluded per Week):</label>
+      <input type="number" id="restriction_days" required>
+    </div>
+    <button type="button" onclick="calculatePMP()">Calculate</button>
+  </form>
+  <div class="results" id="results" style="margin-top: 10px; background: #fff; padding: 10px; border-radius: 5px;"></div>
+</div>
+
+<script>
+  function calculatePMP() {
+    const I = parseInt(document.getElementById('instruments').value);
+    const E = parseInt(document.getElementById('engineers').value);
+    const RW = parseInt(document.getElementById('rate_of_work').value);
+    const RD = parseInt(document.getElementById('restriction_days').value);
+
+    if (isNaN(I) || isNaN(E) || isNaN(RW) || isNaN(RD)) {
+      alert("Please fill in all fields with valid numbers.");
+      return;
+    }
+
+    const TMC = RW * E;
+    const TotalWorkdays = Math.ceil(I / TMC);
+    const workingDaysPerWeek = 7 - RD;
+    const WeeksNeeded = Math.ceil(TotalWorkdays / workingDaysPerWeek);
+    const PMPD = WeeksNeeded * 7;
+
+    document.getElementById('results').innerHTML = `
+      <h3>Results</h3>
+      <p><strong>Total Maintenance Capacity (TMC):</strong> ${TMC}</p>
+      <p><strong>Total Workdays Needed:</strong> ${TotalWorkdays}</p>
+      <p><strong>Weeks Needed:</strong> ${WeeksNeeded}</p>
+      <p><strong>Total Calendar Days (PMPD):</strong> ${PMPD}</p>
+    `;
+  }
+</script>
+      <!-- Logout Button -->
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </section>
+
+    <!-- Client Section (Hidden by default) -->
+    <section id="clientSection" class="hidden">
+      <h2>Client Services</h2>
+      <p>This section is for clients to request services.</p>
+      <ul>
+        <!-- Client-accessible tools and tracking sheets -->
+        <li><a href="https://forms.gle/UCDRiDoQEpGMmGKdA" target="_blank">Maintenance Request</a></li>
+        <li><a href="https://forms.gle/5ULMTBXxvFugLjG2A" target="_blank">Reagent Request</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1lZ9cB02FxCngp9lX5Yg4GDEz8W2qkQqSrwvHOoUdQYo/edit?usp=drivesdk" target="_blank">Repair Status Tracker</a></li>
+        <!-- ... more client links -->
+        <li><a href="https://docs.google.com/spreadsheets/d/1CVigD9S2EDv0t8elT2QtnovWYeZLuNdClcZdAvQ1i5c/edit?usp=drivesdk" target="_blank">Preventive Maintenance Plan</a></li>
+      </ul>
+      <!-- Logout Button -->
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </section>
+  
+<!-- Gantt Chart Section -->
+  <section style="width: 90%; margin: 0 auto 2rem; padding: 20px; background: #fff; border: 2px solid #b22222; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <h2 style="text-align: center; color: #b22222; border-bottom: 2px solid #000; padding-bottom: 0.5rem; font-size: 1.75rem; margin-bottom: 1rem;">
+    Real-Time Monitoring - Preventive Maintenance Gantt Chart
+  </h2>
+
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #000; border-radius: 8px;">
+    <iframe 
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSWAmSnBYkPqthPPDGg6Bvy2-SNBbe5GebNLYWav6CibGfodPWmrCLkTE2JbFv9OteCWqGVhcZsegaD/pubchart?oid=1763779633&format=interactive"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+      title="Real-time Gantt Chart for Preventive Maintenance">
+    </iframe>
+  </div>
+</section>
+
+
+  </main>
+
+
+
+  <!-- Footer with contact info -->
+  <footer>
+    <p>Contact us:</p>
+    <a href="https://www.HumanBurundi.com" target="_blank">
+     <p>WEBSITE</p>
+     </a>
+
+    <p>  Email: Burundihuman@gmail.com </p>
+    <p>  Phone: +25779220250</p>
+    <p>P.O BOX 2564 BUJUMBURA-BURUNDI</p>
+    <p>HEAD OFFICES ADDRESS | QUARTIER INDUSTRIEL,ST: KN 59, No 24</p>
+  </footer>
+
+  <!-- JavaScript for login and logout logic -->
+  <script>
+    // Check login credentials and show appropriate section
+    function checkLogin() {
+      const role = document.getElementById("userRole").value;
+      const code = document.getElementById("accessCode").value;
+
+      // Show Human Burundi section if correct code
+      if (role === "Human Burundi" && code === "HBS2025") {
+        document.getElementById("loginForm").classList.add("hidden");
+        document.getElementById("Human BurundiSection").classList.remove("hidden");
+
+      // Show Client section if correct code
+      } else if (role === "client" && code === "HBC2025") {
+        document.getElementById("loginForm").classList.add("hidden");
+        document.getElementById("clientSection").classList.remove("hidden");
+
+      // Alert on wrong credentials
+      } else {
+        alert("Invalid role or access code.");
+      }
+
+      return false; // Prevent form submission
+    }
+
+    // Logout function resets the view
+    function logout() {
+      document.getElementById("loginForm").classList.remove("hidden");
+      document.getElementById("Human BurundiSection").classList.add("hidden");
+      document.getElementById("clientSection").classList.add("hidden");
+      document.getElementById("accessCode").value = "";
+      document.getElementById("userRole").value = "";
+    }
+  </script>
+</body>
+</html>
